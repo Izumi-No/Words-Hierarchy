@@ -107,3 +107,15 @@ Deno.test(
     });
   }
 );
+
+Deno.test("AnalyzerService - analyzePhrase that's have more than 5000 words", () => {
+  const mockParser = new MockStructureParserService();
+  const analyzerService = new AnalyzerService(mockParser);
+  const fiveThousandWords  = Array.from({ length: 5000 }, () => "1grandchild1 2grandchild1").join(" ");
+  const result = analyzerService.analyzePhrase(fiveThousandWords, 1);
+
+  assertEquals(result, {
+    child1: 5000,
+    child2: 5000,
+  });
+})
