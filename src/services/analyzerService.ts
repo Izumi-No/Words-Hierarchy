@@ -1,6 +1,6 @@
 // AnalyzerService.ts
-import type { IAnalyzerService } from "../interfaces/IAnalyzerService.ts";
-import type { IStructureParserService } from "../interfaces/IStructureParserService.ts";
+import type { IAnalyzerService } from "@/interfaces/IAnalyzerService.ts";
+import type { IStructureParserService } from "@/interfaces/IStructureParserService.ts";
 
 import { WordMatcher } from "./wordMatcherService.ts";
 

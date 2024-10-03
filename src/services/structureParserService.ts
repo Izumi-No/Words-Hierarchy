@@ -1,9 +1,9 @@
 // StructureParserService.ts
-import type { IStructureParserService } from "../interfaces/IStructureParserService.ts";
-import type { Hierarchy } from "../models/hierarchy.ts";
-import type { ITreeNode } from "../utils/nTree.ts";
-import { TreeBuilder } from "./treeBuilderService.ts";
-import { TreeTraverser } from "./treeTraverserService.ts";
+import type { IStructureParserService } from "@/interfaces/IStructureParserService.ts";
+import type { Hierarchy } from "@/models/hierarchy.ts";
+import type { ITreeNode } from "@/utils/nTree.ts";
+import { TreeBuilder } from "@/services/treeBuilderService.ts";
+import { TreeTraverser } from "@/services/treeTraverserService.ts";
 
 export class StructureParserService implements IStructureParserService {
   private _tree: ITreeNode<string> | undefined;

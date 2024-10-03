@@ -1,1 +1,10 @@
-{}
+{
+    "nodeModulesDir": true,
+    "imports": {
+    "@/" : "./src/",
+    "tsyringe": "npm:tsyringe"
+    },
+    "tasks": {
+        "cli": "deno run --allow-read  src/cli/index.ts"
+    }
+}

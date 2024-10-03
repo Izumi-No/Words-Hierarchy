@@ -1,4 +1,4 @@
-import type { IStructureParserService } from "../../interfaces/IStructureParserService.ts";
+import type { IStructureParserService } from "@/interfaces/IStructureParserService.ts";
 
 export class MockStructureParserService implements IStructureParserService {
   getDepthValues(depth: number) {

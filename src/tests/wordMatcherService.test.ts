@@ -1,6 +1,6 @@
 import { assertEquals } from "jsr:@std/assert";
-import { WordMatcher } from "../services/wordMatcherService.ts";
-import { MockStructureParserService } from "./mocks/structureParser.mock.ts";
+import { WordMatcher } from "@/services/wordMatcherService.ts";
+import { MockStructureParserService } from "@/tests/mocks/structureParser.mock.ts";
 
 Deno.test("WordMatcher - matchWords returns correct matches", () => {
   const wordMatcher = new WordMatcher();

@@ -1,8 +1,8 @@
-import type { ICommandHandler } from "../interfaces/ICommandHandler.ts";
-import type { Hierarchy } from "../models/hierarchy.ts";
-import { AnalyzerService } from "../services/analyzerService.ts";
-import { StructureParserService } from "../services/structureParserService.ts";
-import { measurePerformance } from "../utils/performaceHandler.ts";
+import type { ICommandHandler } from "../../interfaces/ICommandHandler.ts";
+import type { Hierarchy } from "../../models/hierarchy.ts";
+import { AnalyzerService } from "../../services/analyzerService.ts";
+import { StructureParserService } from "../../services/structureParserService.ts";
+import { measurePerformance } from "../../utils/performaceHandler.ts";
 
 export class AnalyzeCommandHandler implements ICommandHandler {
     handleCommand(args: string[], json: Hierarchy) {

@@ -1,13 +1,13 @@
 import fs from "node:fs";
 import process from "node:process";
-import { CommandManager } from "./utils/commandManager.ts";
+import { CommandManager } from "./commandManager.ts";
 import { AnalyzeCommandHandler } from "./commands/analyzeCommand.ts";
 
 /**
  * The Intencion of this class is to be used in Deno environment and show the diference between Node and Deno.
  * in addiction, Deno can use the most of standard library of Node. eg.: fs, process and etc.
  */
-class DenoCLI {
+class _DenoCLI {
     private commandManager: CommandManager;
 
     constructor(commandManager: CommandManager) {
@@ -58,13 +58,15 @@ function main() {
     const commandManager = new CommandManager();
     commandManager.registerCommand("analyze", new AnalyzeCommandHandler());
 
-    if (typeof Deno !== "undefined") {
-        const cli = new DenoCLI(commandManager);
-        cli.run();
-    } else {
+    /**
+     * Can also be used:
+     * const cli = new _DenoCLI(commandManager);
+     * cli.run();
+     * but the deno are interoperable with Node standard library, so does make sense use another class.
+     */
         const cli = new NodeCLI(commandManager);
         cli.run();
-    }
+    
 }
 
 main();

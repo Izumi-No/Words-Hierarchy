@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "cli": "tsx ./src/cli.ts"
+    "cli": "tsx ./src/cli"
   },
   "keywords": [],
   "author": "",
@@ -12,5 +12,8 @@
   "devDependencies": {
     "@types/node": "^22.7.4",
     "tsx": "^4.19.1"
+  },
+  "dependencies": {
+    "tsyringe": "^4.8.0"
   }
 }

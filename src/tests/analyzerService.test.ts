@@ -1,6 +1,6 @@
 import { assertEquals, assertThrows } from "jsr:@std/assert";
-import { AnalyzerService } from "../services/analyzerService.ts";
-import { MockStructureParserService } from "./mocks/structureParser.mock.ts";
+import { AnalyzerService } from "@/services/analyzerService.ts";
+import { MockStructureParserService } from "@/tests/mocks/structureParser.mock.ts";
 
 Deno.test(
   "AnalyzerService - analyzePhrase returns correct analysis for depth 1",
