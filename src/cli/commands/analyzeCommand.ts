@@ -1,11 +1,14 @@
 import type { ICommandHandler } from "../../interfaces/ICommandHandler.ts";
 import type { Hierarchy } from "../../models/hierarchy.ts";
-import { AnalyzerService } from "../../services/analyzerService.ts";
-import { StructureParserService } from "../../services/structureParserService.ts";
+// import { AnalyzerService } from "../../services/analyzerService.ts";
+// import { StructureParserService } from "../../services/structureParserService.ts";
 import { measurePerformance } from "../../utils/performaceHandler.ts";
+import type { fromJson } from "@/interfaces/IStructureParserService.ts";
+import { container } from "tsyringe";
+import { AnalyzerService } from "@/services/analyzerService.ts";
+export class AnalyzeCommandHandler implements ICommandHandler<Hierarchy> {
 
-export class AnalyzeCommandHandler implements ICommandHandler {
-    handleCommand(args: string[], json: Hierarchy) {
+    handleCommand(args: string[], ...[json]: [Hierarchy]) {
         const depth = args.findIndex((arg) => arg === "-depth");
         if (depth === -1) {
             console.log("Missing argument for -depth");
@@ -43,7 +46,7 @@ export class AnalyzeCommandHandler implements ICommandHandler {
         const phrase = args.join(" ").replaceAll('"', "").replaceAll("'", "");
 
         const [structureTime, structureParser] = measurePerformance(() => {
-            return StructureParserService.fromJson(json);
+            return container.resolve<fromJson>("StructureParserServiceFromJson")(json)
         });
 
         const [analyzeTime, result] = measurePerformance(() => {

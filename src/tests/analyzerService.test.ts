@@ -1,3 +1,5 @@
+import "reflect-metadata"
+import "@/container.ts"
 import { assertEquals, assertThrows } from "jsr:@std/assert";
 import { AnalyzerService } from "@/services/analyzerService.ts";
 import { MockStructureParserService } from "@/tests/mocks/structureParser.mock.ts";

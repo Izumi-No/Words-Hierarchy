@@ -1,3 +1,6 @@
+import "reflect-metadata"
+import "@/container.ts"
+
 import { assertEquals } from "jsr:@std/assert";
 import { TreeBuilder } from "@/services/treeBuilderService.ts";
 import type { Hierarchy } from "@/models/hierarchy.ts";

@@ -4,3 +4,5 @@ export interface IStructureParserService {
   getDepthValues(depth: number): ITreeNode<string>[];
 }
 
+export type fromJson = <T>(json: T) => IStructureParserService
+

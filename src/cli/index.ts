@@ -1,71 +1,18 @@
-import fs from "node:fs";
-import process from "node:process";
-import { CommandManager } from "./commandManager.ts";
-import { AnalyzeCommandHandler } from "./commands/analyzeCommand.ts";
+import "reflect-metadata";
+import "@/container.ts"
+import { AnalyzeCommandHandler } from "@/cli/commands/analyzeCommand.ts";
+import { container } from "tsyringe"
+import type { ICommandManager } from "@/interfaces/ICommandManager.ts";
+import type { ICLI } from "@/interfaces/ICLI.ts";
 
-/**
- * The Intencion of this class is to be used in Deno environment and show the diference between Node and Deno.
- * in addiction, Deno can use the most of standard library of Node. eg.: fs, process and etc.
- */
-class _DenoCLI {
-    private commandManager: CommandManager;
 
-    constructor(commandManager: CommandManager) {
-        this.commandManager = commandManager;
-    }
-
-    run() {
-        const args = Deno.args;
-        if (args.length === 0) {
-            console.log("Missing command");
-            Deno.exit(1);
-        }
-
-        const command = args.shift();
-        const json = JSON.parse(Deno.readTextFileSync("./dicts/hierarchy.json"));
-
-        if (command) {
-            this.commandManager.executeCommand(command, args, json);
-        }
-    }
-}
-
-class NodeCLI {
-    private commandManager: CommandManager;
-
-    constructor(commandManager: CommandManager) {
-        this.commandManager = commandManager;
-    }
-
-    run() {
-        const args = process.argv.slice(2);
-        if (args.length === 0) {
-            console.log("Missing command");
-            process.exit(1);
-        }
-
-        const command = args.shift();
-        const json = JSON.parse(fs.readFileSync("./dicts/hierarchy.json", "utf-8"));
-
-        if (command) {
-            this.commandManager.executeCommand(command, args, json);
-        }
-    }
-}
-
-// Main entry point. Applies Dependency Inversion Principle.
 function main() {
-    const commandManager = new CommandManager();
+    const commandManager = container.resolve<ICommandManager>("CommandManager");
+    
     commandManager.registerCommand("analyze", new AnalyzeCommandHandler());
 
-    /**
-     * Can also be used:
-     * const cli = new _DenoCLI(commandManager);
-     * cli.run();
-     * but the deno are interoperable with Node standard library, so does make sense use another class.
-     */
-        const cli = new NodeCLI(commandManager);
-        cli.run();
+    const cli = container.resolve<ICLI>("CLI")
+    cli.run();
     
 }
 

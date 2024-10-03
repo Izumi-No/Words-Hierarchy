@@ -1,5 +1,5 @@
-import type { Hierarchy } from "../models/hierarchy.ts";
 
-export interface ICommandHandler {
-    handleCommand(args: string[], json: Hierarchy): void;
+// biome-ignore lint/suspicious/noExplicitAny: this is an generic interface
+export interface ICommandHandler<T = any> {
+    handleCommand(args: string[], ...rest: T[]): void;
 }

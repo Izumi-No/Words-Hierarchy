@@ -1,3 +1,7 @@
+
+import "reflect-metadata"
+import "@/container.ts"
+
 import { assertEquals } from "jsr:@std/assert";
 import { WordMatcher } from "@/services/wordMatcherService.ts";
 import { MockStructureParserService } from "@/tests/mocks/structureParser.mock.ts";
