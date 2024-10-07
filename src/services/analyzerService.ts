@@ -1,14 +1,14 @@
-// AnalyzerService.ts
-import type { IAnalyzerService } from "../interfaces/IAnalyzerService.ts";
-import type { IStructureParserService } from "../interfaces/IStructureParserService.ts";
+import type { IStructureParserService } from "@/interfaces/IStructureParserService.ts";
 
-import { WordMatcher } from "./wordMatcherService.ts";
+import type{ IWordMatcher } from "@/interfaces/IwordMatcher.ts";
+import { container } from "tsyringe";
 
-export class AnalyzerService implements IAnalyzerService {
-  private wordMatcher: WordMatcher;
+export class AnalyzerService {
+  
+  private wordMatcher: IWordMatcher
 
-  constructor(private structureParser: IStructureParserService) {
-    this.wordMatcher = new WordMatcher();
+  constructor(private structureParser: IStructureParserService, ) {
+    this.wordMatcher = container.resolve<IWordMatcher>("WordMatcher");
   }
 
   analyzePhrase(phrase: string, depth: number): Record<string, number> {

@@ -4,13 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "cli": "tsx ./src/cli.ts"
+    "cli": "tsx ./src/cli"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@biomejs/biome": "^1.9.3",
     "@types/node": "^22.7.4",
     "tsx": "^4.19.1"
+  },
+  "dependencies": {
+    "reflect-metadata": "^0.2.2",
+    "tsyringe": "^4.8.0"
   }
 }

@@ -1,7 +1,10 @@
-import type { Hierarchy } from "../models/hierarchy.ts";
-import { TreeNode } from "../utils/nTree.ts";
+import type { ITreeBuilder } from "@/interfaces/ITreeBuilder.ts";
+import type { Hierarchy } from "@/models/hierarchy.ts";
+import { TreeNode } from "@/utils/nTree.ts";
 
-export class TreeBuilder {
+
+
+export class TreeBuilder implements ITreeBuilder  {
   jsonToTree(json: Hierarchy): TreeNode<string> | undefined {
     const processNode = (
       key: string,

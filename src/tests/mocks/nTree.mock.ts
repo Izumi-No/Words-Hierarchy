@@ -1,4 +1,4 @@
-import type { ITreeNode } from "../../utils/nTree.ts";
+import type { ITreeNode } from "@/utils/nTree.ts";
 
 export const TreeMock: ITreeNode<string> = {
   value: "Animais",

@@ -1,17 +1,15 @@
+import type { ICommandManager } from "@/interfaces/ICommandManager.ts";
+import process from "node:process"
 import fs from "node:fs";
-import process from "node:process";
-import { CommandManager } from "./utils/commandManager.ts";
-import { AnalyzeCommandHandler } from "./commands/analyzeCommand.ts";
+
+import {inject} from "tsyringe"
 
 /**
  * The Intencion of this class is to be used in Deno environment and show the diference between Node and Deno.
  * in addiction, Deno can use the most of standard library of Node. eg.: fs, process and etc.
  */
-class DenoCLI {
-    private commandManager: CommandManager;
-
-    constructor(commandManager: CommandManager) {
-        this.commandManager = commandManager;
+export class _DenoCLI {
+    constructor(@inject("CommandManager") private commandManager: ICommandManager) {
     }
 
     run() {
@@ -30,11 +28,9 @@ class DenoCLI {
     }
 }
 
-class NodeCLI {
-    private commandManager: CommandManager;
+export class NodeCLI {
 
-    constructor(commandManager: CommandManager) {
-        this.commandManager = commandManager;
+    constructor(@inject("CommandManager") private commandManager: ICommandManager) {
     }
 
     run() {
@@ -52,19 +48,3 @@ class NodeCLI {
         }
     }
 }
-
-// Main entry point. Applies Dependency Inversion Principle.
-function main() {
-    const commandManager = new CommandManager();
-    commandManager.registerCommand("analyze", new AnalyzeCommandHandler());
-
-    if (typeof Deno !== "undefined") {
-        const cli = new DenoCLI(commandManager);
-        cli.run();
-    } else {
-        const cli = new NodeCLI(commandManager);
-        cli.run();
-    }
-}
-
-main();

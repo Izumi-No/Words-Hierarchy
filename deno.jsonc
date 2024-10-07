@@ -1,1 +1,15 @@
-{}
+{
+    "nodeModulesDir": true,
+    "imports": {
+    "@/" : "./src/",
+    "tsyringe": "npm:tsyringe",
+    "reflect-metadata": "npm:reflect-metadata"
+    },
+    "compilerOptions": {
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true
+    },
+    "tasks": {
+        "cli": "deno run --allow-read  src/cli/index.ts"
+    }
+}

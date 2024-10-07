@@ -1,6 +1,10 @@
-import type { ITreeNode } from "../utils/nTree.ts";
+import type { ITreeTraverser } from "@/interfaces/ITreeTraverser.ts";
+import type { ITreeNode } from "@/utils/nTree.ts";
 
-export class TreeTraverser {
+
+
+
+export class TreeTraverser  implements ITreeTraverser {
   valueAtDepth(tree: ITreeNode<string>): Record<number, ITreeNode<string>[]> {
     const result: Record<number, ITreeNode<string>[]> = {};
     const queue: { node: ITreeNode<string>; depth: number }[] = [

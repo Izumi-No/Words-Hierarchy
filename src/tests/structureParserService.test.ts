@@ -1,6 +1,9 @@
+import "reflect-metadata"
+import "@/container.ts"
+
 import { assertEquals } from "jsr:@std/assert";
-import { StructureParserService } from "../services/structureParserService.ts";
-import type { Hierarchy } from "../models/hierarchy.ts";
+import { StructureParserService } from "@/services/structureParserService.ts";
+import type { Hierarchy } from "@/models/hierarchy.ts";
 
 const sampleHierarchy: Hierarchy = {
   root: {
